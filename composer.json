@@ -1,66 +1,41 @@
 {
-    "name": "lavalite/framework",
-    "description": "The lavalite framework",
-    "keywords": ["framework", "lavalite"],
+    "name": "litepie/workflow",
+    "description": "Integerate Symfony Workflow component into Lavalite.",
+    "keywords": ["workflow", "symfony", "laravel", "laravel5", "lavalite"],
     "license": "MIT",
-    "homepage": "http://lavalite.org",
-    "authors": [{
-            "name": "Renfos Technologies",
-            "email": "info@renfos.com"
-        }
-    ],
     "require": {
-        "anahkiasen/former": "~4.6",
-        "hashids/hashids": "~4.1",
-        "intervention/imagecache": "~2.5",
-        "laravel/socialite": "~5.1",
-        "league/fractal": "~0.19",
-        "mcamara/laravel-localization": "^1.6",
-        "prettus/l5-repository": "^2.7",
-        "rachidlaasri/laravel-installer": "^4.0",
-        "spatie/laravel-activitylog": "~3.16"
-    },
-    "replace": {
-        "litepie/activities": "self.version",
-        "litepie/database": "self.version",
-        "litepie/filer": "self.version",
-        "litepie/form": "self.version",
-        "litepie/hashids": "self.version",
-        "litepie/install": "self.version",
-        "litepie/menu": "self.version",
-        "litepie/node": "self.version",
-        "litepie/repository": "self.version",
-        "litepie/roles": "self.version",
-        "litepie/settings": "self.version",
-        "litepie/team": "self.version",
-        "litepie/theme": "self.version",
-        "litepie/trans": "self.version",
-        "litepie/user": "self.version"
+        "php": ">=7.1.0",
+        "symfony/process": "~4.1",
+        "symfony/workflow": "~4.1",
+        "symfony/event-dispatcher": "~4.1",
+        "illuminate/console": "~5.6|~5.7",
+        "illuminate/support": "~5.6|~5.7"
     },
     "autoload": {
-        "classmap": [
-            "src/Litepie/Menu/database/seeds",
-            "src/Litepie/Roles/database/seeds",
-            "src/Litepie/Settings/database/seeds",
-            "src/Litepie/Team/database/seeds",
-            "src/Litepie/User/database/seeds"
-        ],
-        "files": [
-            "src/Litepie/Foundation/helpers.php",
-            "src/Litepie/Settings/helpers.php",
-            "src/Litepie/Theme/helpers.php"
-        ],
         "psr-4": {
-            "Litepie\\": "src/Litepie"
+            "Litepie\\Workflow\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
         "laravel": {
-            "dont-discover": [
-                "rachidlaasri/laravel-installer",
-                "intervention/imagecache",
-                "spatie/laravel-backup"
-            ]
+            "providers": [
+                "Litepie\\Workflow\\WorkflowServiceProvider"
+            ],
+            "aliases": {
+                "Workflow": "Litepie\\Workflow\\Facades\\Workflow"
+            }
         }
+    },
+    "require-dev": {
+        "mockery/mockery": "^0.9.8",
+        "phpunit/phpunit": "^6.0 || ~7.0"
     }
 }
